@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import Post from "./Post";
+import React from 'react';
+import { connect } from 'react-redux';
+import Post from './Post';
 
 function Posts({ syncPosts }) {
   if (!syncPosts.length) {
@@ -10,17 +10,16 @@ function Posts({ syncPosts }) {
     <div>
       <h1>POSTS</h1>
       {syncPosts.map((post) => (
-        <Post post={post} key={post}></Post>
+        <Post post={post} key={post.id}></Post>
       ))}
     </div>
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    syncPosts: state.posts.posts
-  }
-}
-
+    syncPosts: state.posts.posts,
+  };
+};
 
 export default connect(mapStateToProps, null)(Posts);
